@@ -1,6 +1,6 @@
 # MVC Servir - Sistema de Gestión de Fondos para ONG
 
-Sistema completo de gestión de fondos, presupuesto y ejecución para organizaciones no gubernamentales, desarrollado con Next.js, TypeScript, Prisma y TailwindCSS, siguiendo la arquitectura MVC (Model-View-Controller).
+Sistema completo de gestión de fondos, presupuesto y ejecución para organizaciones no gubernamentales, desarrollado con Next.js, TypeScript,MySQL y TailwindCSS, siguiendo la arquitectura MVC (Model-View-Controller).
 
 ## Características
 
@@ -29,20 +29,16 @@ Sistema completo de gestión de fondos, presupuesto y ejecución para organizaci
    
    Ver [MYSQL_SETUP.md](MYSQL_SETUP.md) para instrucciones detalladas.
    
-   ```bash
-   # Crear archivo .env con las credenciales de MySQL
-   # DATABASE_URL="mysql://root:password@localhost:3306/mvc_servir"
-   
-   # Generar cliente de Prisma
-   npm run db:generate
-   
-   # Crear y aplicar migraciones
-   npm run db:setup
+   ```
+   COnfiguracion de MYSQL local utilizando variables de entorno.
+   database name:mvc_servir
    ```
 
 3. **Ejecutar el proyecto:**
    ```bash
-   npm run dev
+   npm run build
+   npm run dev (desarrollo)
+   npm run start (produccion)
    ```
 
 4. **Abrir en el navegador:**
