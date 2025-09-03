@@ -26,9 +26,7 @@ Sistema completo de gestión de fondos, presupuesto y ejecución para organizaci
    ```
 
 2. **Instalar MySQL y configurar la base de datos:**
-   
-   Ver [MYSQL_SETUP.md](MYSQL_SETUP.md) para instrucciones detalladas.
-   
+      
    ```
    COnfiguracion de MYSQL local utilizando variables de entorno.
    database name:mvc_servir
