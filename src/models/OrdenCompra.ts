@@ -53,7 +53,14 @@ export class OrdenCompra {
       INSERT INTO ordenes_compra (numero, proveedor, monto, fecha, proyectoId, renglonId)
       VALUES (?, ?, ?, ?, ?, ?)
     `
-    const result = await executeUpdate(query, [numero, proveedor, monto, fecha, proyectoId, renglonId])
+    const result = await executeUpdate(query, [
+      numero || null, 
+      proveedor, 
+      monto, 
+      fecha || null, 
+      proyectoId, 
+      renglonId
+    ])
     return result.insertId
   }
 
@@ -65,7 +72,15 @@ export class OrdenCompra {
       SET numero = ?, proveedor = ?, monto = ?, fecha = ?, proyectoId = ?, renglonId = ?, updatedAt = CURRENT_TIMESTAMP
       WHERE id = ?
     `
-    await executeUpdate(query, [numero, proveedor, monto, fecha, proyectoId, renglonId, id])
+    await executeUpdate(query, [
+      numero || null, 
+      proveedor, 
+      monto, 
+      fecha || null, 
+      proyectoId, 
+      renglonId, 
+      id
+    ])
     return true
   }
 

@@ -35,16 +35,17 @@ export class OrdenCompraController {
 
   async create(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const { proveedor, monto, fecha, proyectoId, renglonId } = req.body
+      const { numero, proveedor, monto, fecha, proyectoId, renglonId } = req.body
 
       if (!proveedor || !monto || !proyectoId || !renglonId) {
         return res.status(400).json({ success: false, message: 'Campos requeridos faltantes' })
       }
 
       const orden = await this.ordenModel.create({
+        numero: numero || null,
         proveedor,
         monto: parseFloat(monto),
-        fecha: fecha ? new Date(fecha) : undefined,
+        fecha: fecha ? new Date(fecha) : null,
         proyectoId: parseInt(proyectoId),
         renglonId: parseInt(renglonId)
       })
@@ -58,13 +59,20 @@ export class OrdenCompraController {
   async update(req: NextApiRequest, res: NextApiResponse) {
     try {
       const { id } = req.query
-      const data = req.body
+      const { numero, proveedor, monto, fecha, proyectoId, renglonId } = req.body
 
       if (!id || isNaN(Number(id))) {
         return res.status(400).json({ success: false, message: 'ID inválido' })
       }
 
-      const orden = await this.ordenModel.update(Number(id), data)
+      const orden = await this.ordenModel.update(Number(id), {
+        numero: numero || null,
+        proveedor,
+        monto: parseFloat(monto),
+        fecha: fecha ? new Date(fecha) : null,
+        proyectoId: parseInt(proyectoId),
+        renglonId: parseInt(renglonId)
+      })
       
       res.status(200).json({ success: true, data: orden })
     } catch (error) {

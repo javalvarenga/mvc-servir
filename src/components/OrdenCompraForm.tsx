@@ -151,8 +151,10 @@ export default function OrdenCompraForm({ isEditing = false, ordenId, initialDat
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
+          numero: formData.numero || null,
+          proveedor: formData.proveedor,
           monto: parseFloat(formData.monto),
+          fecha: formData.fecha || null,
           proyectoId: parseInt(formData.proyectoId),
           renglonId: parseInt(formData.renglonId)
         }),
